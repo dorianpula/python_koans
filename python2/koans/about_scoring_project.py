@@ -34,8 +34,21 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
+
+    total_score = 0
+    dice_occurance = list()
+    for num in range(1, 7):
+        dice_occurance[num] = 0
+
+    # Reduce the list into a map of its occurances.
+    for num in dice:
+        dice_occurance[num] += dice_occurance[num]
+
+    # TODO Go through dice results and extract a triplet.
+
+
     # You need to write this method
-    pass
+    return total_score
 
 
 class AboutScoringProject(Koan):
