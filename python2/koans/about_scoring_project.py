@@ -36,16 +36,32 @@ from runner.koan import *
 def score(dice):
 
     total_score = 0
-    dice_occurance = list()
-    for num in range(1, 7):
-        dice_occurance[num] = 0
-
-    # Reduce the list into a map of its occurances.
-    for num in dice:
-        dice_occurance[num] += dice_occurance[num]
 
     # TODO Go through dice results and extract a triplet.
+    # TODO Take the remains of the results and sum up the results as you see them?
 
+    # TODO Think about solving this problem with lambdas & map/reduce.
+
+    # Get all the counts of the dice.
+    count_of_dice = {}
+    for die in dice:
+        if die in count_of_dice:
+            count_of_dice[die] += 1
+        else:
+            count_of_dice[die] = 1
+
+    if 1 in count_of_dice:
+        triple_count = count_of_dice[1] / 3
+        total_score += ((triple_count * 1000) + ((count_of_dice[1] - triple_count * 3) * 100))
+
+    if 5 in count_of_dice:
+        triple_count = count_of_dice[5] / 3
+        total_score += ((count_of_dice[5] - triple_count * 3) * 50)
+
+    for key in count_of_dice:
+        value = count_of_dice[key]
+        if key != 1 and value >= 3:
+            total_score += (value / 3) * 100 * key
 
     # You need to write this method
     return total_score
