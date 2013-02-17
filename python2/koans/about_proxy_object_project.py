@@ -27,7 +27,16 @@ class Proxy(object):
         self._obj = target_object
 
     # WRITE CODE HERE
+    def __getattr__(self, attr_name):
+        pass
 
+    def __setattr__(self, key, value):
+
+        if key == 'channel':
+            #self._obj.channel(value)
+            pass
+
+        #self._obj.__setattr__(key, value)
 
 # The proxy object should pass the following Koan:
 #
